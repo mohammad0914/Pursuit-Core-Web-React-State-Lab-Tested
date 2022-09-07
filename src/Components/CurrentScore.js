@@ -40,7 +40,7 @@ class CurrentScore extends Component {
     }
 
     render() {
-        const { score, step } = this.state;
+        let { score, step } = this.state;
         if (score >= 100) {
             return (
                 <>
