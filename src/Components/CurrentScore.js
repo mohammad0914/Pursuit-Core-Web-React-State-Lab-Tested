@@ -8,6 +8,7 @@ class CurrentScore extends Component {
             score: 0,
             step: 1,
         };
+        this.ChangeScore=this.ChangeScore.bind(this)
     }
 
     ChangeScore() {
@@ -18,9 +19,9 @@ class CurrentScore extends Component {
         });
     }
 
-    AddStep() {
-        const { score, step } = this.state;
-        const nextStep = step++
+   AddStep=()=> {
+        let { score, step } = this.state;
+        const nextStep = ++step
         const nextScore = score - 10
         if (nextScore >= 0) {
             this.setState({
@@ -32,7 +33,7 @@ class CurrentScore extends Component {
         }
     }
 
-    PlayAgain() {
+    PlayAgain=()=> {
         this.setState({
             score: 0,
             step: 0
@@ -45,8 +46,8 @@ class CurrentScore extends Component {
             return (
                 <>
                     <h1>Current Scored:{score}</h1>
-                    <h2>Play again</h2>
-                    <button onClick={this.PlayAgain}>play again</button>
+                    <h2>You Win</h2>
+                    <button onClick={this.PlayAgain}>Play again?</button>
 
                 </>
             );
@@ -54,9 +55,9 @@ class CurrentScore extends Component {
 
         return (
             <>
-                <h1>Current Scored:{score}</h1>
+                <h1>Current Score: {score}</h1>
                 <button onClick={this.ChangeScore}>+{step}</button>
-                <button onClick={this.AddStep}>Pay 10 points to change from +{step} to +{step++}</button>
+                <button onClick={this.AddStep}>Pay 10 points to change from +{step} to +{++step}</button>
             </>
         );
     }
